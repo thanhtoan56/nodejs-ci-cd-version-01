@@ -25,3 +25,4 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: npm ci # Đây chính là lệnh CI: Xóa thư mục đã tồn tại, và tạo lại tất cả các file mới, và install lại hoàn toàn từ file package.json
+    - run: pm2 restart nodejs-ci-cd-run # Tương đương với lệnh: pm2 start server.js. Vì trước đó đã tạo một name pm2: pm2 start server.js --name=nodejs-ci-cd-run

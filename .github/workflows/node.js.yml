@@ -1,0 +1,27 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI/CD => SETUP DEMO
+
+on:
+  push:
+    branches: [ "main" ] # Khi push code lên branches "main" => tự động deploy
+
+jobs:
+  build:
+
+    runs-on: self-hosted # Label đã cài đặt "actions-runner" trong EC2 | VPS là: self-hosted
+
+    strategy:
+      matrix:
+        node-version: [20.x] # Chọn chạy bản Node version 20
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci # Đây chính là lệnh CI: Xóa thư mục đã tồn tại, và tạo lại tất cả các file mới, và install lại hoàn toàn từ file package.json

@@ -1,14 +1,14 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/checkstatus', (req, res, next) => {
+router.get('/api/checkstatus', (req, res, next) => {
     res.status(200).json({
         status: 'success',
         message: 'api ok'
     })
 })
 
-router.get('/checklist', (req, res, next) => {
+router.get('/api/checklist', (req, res, next) => {
     res.status(200).json({
         status: 'success',
         message: 'api ok',

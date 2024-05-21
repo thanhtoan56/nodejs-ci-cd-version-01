@@ -21,7 +21,7 @@ app.use(express.urlencoded({
 }))
 
 //router
-app.use('/api', require('./v1/routes/index.router'))
+app.use(require('./v1/routes/index.router'))
 
 // Error Handling Middleware called
 
